@@ -1,39 +1,36 @@
-
 import networkx as nx 
 import matplotlib.pyplot as plt 
-%matplotlib inline 
-#----------initialising the graph 
-N = nx.Graph() 
+import seaborn as sns
+%matplotlib inline
+sns.set()
+#--- put the values
+G = nx.Graph()
+g = nx.generators.krackhardt_kite_graph()
+
+print("Notes of krackhardt_kite_graph: ","\n",g.nodes())
+
+print("Notes of krackhardt_kite_graph","\n",g.edges())
+
+
+plt.figure()
+
+nx.draw_networkx(G)
+people = {2:"Carlos" , 5:"Asad", 7:"Jane", 8:"Fernando", 9:"Kazi", 6:"Garth", 4:"Ed", 1:"Billal", 3:"Diane", 0:"Garth"}
+people
+GH=nx.Graph()
+edg=([(0,1),(1,2),(2,3),(3,0),(0,4),(4,1),(4,5),(3,6),(0,6),(2,7),(1,7),(0,8),(1,8),(3,8),(2,8),(7,6),(5,9)])
+edg=g.edges()
+# ---print edges
+GH.add_edges_from(edg)
  
-n = nx.generators.small.krackhardt_kite_graph() 
- 
-print("Nodes krackhardt_kite_graph: ","\n",n.nodes(),"\n") 
-print("Edges from krackhardt_kite_graph: ","\n",n.edges()) 
- 
- 
-person = {2:"Md" ,0:"Soma", 7:"Jarif", 8:"Marzan", 9:"Adib", 6:"Ayan", 4:"Moshur", 1:"Asad", 3:"Hemayet", 5:"Uddin"} 
-person 
- 
-#--------------Creating the graph object 
-N1 =nx.Graph() 
-#---------------Creating the Edges from the graph 
-#---Option 1--- 
-e1 = [(1,4), (2,4), (0,3), (2,7), (2,5), 
-     (3,4), (3,5), (3,6), (4,6), (5,6), (5,7), (6,8), (8,6), (8,5),(8,6),(8,7),(8,6),(9,5)] 
- 
-#---Option 2--- 
-e1 = n.edges() 
- 
-#---------------Add all the edges to the graph object 
-N1.add_edges_from(e1) 
- 
-print("Edges for named network","\n" ,N1.edges()) 
- 
-H = nx.relabel_nodes(N1, person) 
-print("----------------------\n") 
-print(" Nodes for named network: ", "\n", H.nodes()) 
-print("----------------------\n") 
-print(" Edges for named network: ", "\n", H.edges()) 
- 
-nx.draw(H, with_labels =1) 
-plt.show() 
+print ("edge of networ","\n",GH.edges())
+GL= nx.relabel_nodes(GH, people)
+print("print the name in the networks\n")
+print(" named network as note: ", "\n", GL.nodes())
+print("----------------------\n")
+print(" Edges of the  network: ", "\n", GL.edges())
+nx.draw(GL,with_labels=1)
+plt.show()
+
+result:
+
